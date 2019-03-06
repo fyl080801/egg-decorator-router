@@ -5,6 +5,7 @@
   "eggPlugin": {
     "name": "decoratorRouter"
   },
+  "main": "./lib/index.js",
   "keywords": [
     "egg",
     "eggPlugin",
