@@ -36,23 +36,67 @@ $ npm i egg-decorator-router --save
 // {app_root}/config/plugin.js
 exports.decoratorRouter = {
   enable: true,
-  package: 'egg-decorator-router',
-};
+  package: 'egg-decorator-router'
+}
 ```
 
 ## Configuration
 
 ```js
 // {app_root}/config/config.default.js
-exports.decoratorRouter = {
-};
+exports.decoratorRouter = {}
 ```
 
 see [config/config.default.js](config/config.default.js) for more detail.
 
 ## Example
 
-<!-- example here -->
+```javascript
+'use strict'
+
+const { Controller } = require('egg')
+const { Route, HttpGet, Middleware, filters } = require('egg-decorator-router')
+const { DefaultFilter } = filters
+
+const routeM = (ctx, next) => {
+  console.log('passed route middleware')
+  next()
+}
+
+const actionM = i => {
+  return (ctx, next) => {
+    console.log('passed action middleware ' + i)
+    next()
+  }
+}
+
+@Route()
+@Middleware(routeM)
+class HomeController extends Controller {
+  @HttpGet('/')
+  async index() {
+    await new Promise(resolve => {
+      this.ctx.body = 'ssss'
+      resolve()
+    })
+  }
+
+  @HttpGet()
+  @Middleware(actionM(2), 2)
+  @Middleware(actionM(1), 1)
+  func1(ctx) {
+    ctx.body = 'hi, func1'
+  }
+
+  @HttpGet(':id')
+  @DefaultFilter('aaa')
+  func2(ctx) {
+    ctx.body = 'hi, func2' + ctx.params.id
+  }
+}
+
+module.exports = HomeController
+```
 
 ## Questions & Suggestions
 

@@ -28,10 +28,10 @@ Description here.
 
 ### 依赖的 egg 版本
 
-egg-decorator-router 版本 | egg 1.x
---- | ---
-1.x | 😁
-0.x | ❌
+| egg-decorator-router 版本 | egg 1.x |
+| ------------------------- | ------- |
+| 1.x                       | 😁      |
+| 0.x                       | ❌       |
 
 ### 依赖的插件
 <!--
@@ -55,9 +55,9 @@ exports.decoratorRouter = {
 
 ## 使用场景
 
-- Why and What: 描述为什么会有这个插件，它主要在完成一件什么事情。
+- 不用单独定义router，直接在controller里通过装饰器自动生成router
 尽可能描述详细。
-- How: 描述这个插件是怎样使用的，具体的示例代码，甚至提供一个完整的示例，并给出链接。
+- 支持中间件的定义
 
 ## 详细配置
 
@@ -65,7 +65,52 @@ exports.decoratorRouter = {
 
 ## 单元测试
 
-<!-- 描述如何在单元测试中使用此插件，例如 schedule 如何触发。无则省略。-->
+```javascript
+'use strict'
+
+const { Controller } = require('egg')
+const { Route, HttpGet, Middleware, filters } = require('egg-decorator-router')
+const { DefaultFilter } = filters
+
+const routeM = (ctx, next) => {
+  console.log('passed route middleware')
+  next()
+}
+
+const actionM = i => {
+  return (ctx, next) => {
+    console.log('passed action middleware ' + i)
+    next()
+  }
+}
+
+@Route()
+@Middleware(routeM)
+class HomeController extends Controller {
+  @HttpGet('/')
+  async index() {
+    await new Promise(resolve => {
+      this.ctx.body = 'ssss'
+      resolve()
+    })
+  }
+
+  @HttpGet()
+  @Middleware(actionM(2), 2)
+  @Middleware(actionM(1), 1)
+  func1(ctx) {
+    ctx.body = 'hi, func1'
+  }
+
+  @HttpGet(':id')
+  @DefaultFilter('aaa')
+  func2(ctx) {
+    ctx.body = 'hi, func2' + ctx.params.id
+  }
+}
+
+module.exports = HomeController
+```
 
 ## 提问交流
 
