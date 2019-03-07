@@ -63,7 +63,7 @@ exports.decoratorRouter = {
 
 请到 [config/config.default.js](config/config.default.js) 查看详细配置项说明。
 
-## 单元测试
+## 示例
 
 ```javascript
 'use strict'
@@ -87,7 +87,7 @@ const actionM = i => {
 @Route()
 @Middleware(routeM)
 class HomeController extends Controller {
-  @HttpGet('/')
+  @HttpGet('/') // path: /
   async index() {
     await new Promise(resolve => {
       this.ctx.body = 'ssss'
@@ -95,14 +95,14 @@ class HomeController extends Controller {
     })
   }
 
-  @HttpGet()
+  @HttpGet() // path: /func1
   @Middleware(actionM(2), 2)
   @Middleware(actionM(1), 1)
   func1(ctx) {
     ctx.body = 'hi, func1'
   }
 
-  @HttpGet(':id')
+  @HttpGet(':id') // path: /:id
   @DefaultFilter('aaa')
   func2(ctx) {
     ctx.body = 'hi, func2' + ctx.params.id
