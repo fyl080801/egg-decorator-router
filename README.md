@@ -49,6 +49,60 @@ exports.decoratorRouter = {}
 
 see [config/config.default.js](config/config.default.js) for more detail.
 
+## Specification
+
+The full path is combin between root-path and sub-path.
+
+### Use Route define a root-path on the controller
+
+Define a root path on controller
+
+```javascript
+// root path is '/'
+@Route()
+
+// root path is '/'
+@Route('/')
+
+// root path is '/routename'
+@Route('/routename')
+
+// root path is '/routename/action'
+@Route('/routename/action')
+```
+
+Parameter is available
+
+```javascript
+@Route('/routename/:name')
+```
+
+### Use HttpMethod define a sub-path
+
+HttpMethod include `HttpGet` `HttpPost` `HttpPut` `HttpPatch` and `HttpDelete`
+
+Define a sub-path in controller's method
+
+```javascript
+// sub-path is '/'
+@HttpGet()
+
+// sub-path is '/'
+@HttpGet('/')
+
+// sub-path is '/action'
+@HttpGet('/action')
+
+// sub-path is '/action/:id'
+@HttpGet('/action/:id')
+```
+
+### Define middleware
+
+```javascript
+@Middleware(routeM)
+```
+
 ## Example
 
 ```javascript
@@ -100,7 +154,7 @@ module.exports = HomeController
 
 ## Questions & Suggestions
 
-Please open an issue [here](https://github.com/eggjs/egg/issues).
+Please open an issue [here](https://github.com/fyl080801/egg-decorator-router/issues).
 
 ## License
 
