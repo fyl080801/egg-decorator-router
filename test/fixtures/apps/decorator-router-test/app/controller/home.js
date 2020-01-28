@@ -3,16 +3,16 @@
 const Controller = require('egg').Controller
 const { Route, HttpGet, HttpPost } = require('../../../../../../lib')
 
-@Route('/')
+@Route()
 class HomeController extends Controller {
-  @HttpGet('api')
+  @HttpGet('/api')
   async index() {
     const { app, ctx } = this
 
     ctx.body = 'hi, ' + app.plugins.decoratorRouter.name
   }
 
-  @HttpPost('api')
+  @HttpPost('/api')
   async create() {
     const { ctx } = this
 
