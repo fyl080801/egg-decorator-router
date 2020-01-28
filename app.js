@@ -1,6 +1,8 @@
 'use strict'
 
-require('babel-register')({
+const register = require('babel-register')
+
+register({
   plugins: ['transform-decorators-legacy']
 })
 

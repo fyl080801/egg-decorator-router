@@ -1,10 +1,22 @@
 'use strict'
 
 const Controller = require('egg').Controller
+const { Route, HttpGet, HttpPost } = require('../../../../../../lib')
 
+@Route('/')
 class HomeController extends Controller {
+  @HttpGet('api')
   async index() {
-    this.ctx.body = 'hi, ' + this.app.plugins.decoratorRouter.name
+    const { app, ctx } = this
+
+    ctx.body = 'hi, ' + app.plugins.decoratorRouter.name
+  }
+
+  @HttpPost('api')
+  async create() {
+    const { ctx } = this
+
+    ctx.body = 'post data: ' + JSON.stringify(ctx.request.body)
   }
 }
 
