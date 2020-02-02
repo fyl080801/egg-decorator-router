@@ -60,12 +60,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/eggjs/egg-decorator-router.git"
+    "url": "git+https://github.com/fyl080801/egg-decorator-router.git"
   },
   "bugs": {
-    "url": "https://github.com/eggjs/egg/issues"
+    "url": "https://github.com/fyl080801/egg-decorator-router/issues"
   },
-  "homepage": "https://github.com/eggjs/egg-decorator-router#readme",
-  "author": "",
+  "homepage": "https://github.com/fyl080801/egg-decorator-router#readme",
+  "author": "fyl080801",
   "license": "MIT"
 }
