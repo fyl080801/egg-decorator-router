@@ -20,6 +20,8 @@
 [download-image]: https://img.shields.io/npm/dm/egg-decorator-router.svg?style=flat-square
 [download-url]: https://npmjs.org/package/egg-decorator-router
 
+使用装饰器来定义 egg.js 的路由和中间件
+
 ## 依赖说明
 
 ### 依赖的 egg 版本
@@ -27,7 +29,7 @@
 | egg-decorator-router 版本 | egg 1.x |
 | ------------------------- | ------- |
 | 1.x                       | 😁      |
-| 0.x                       | ❌       |
+| 0.x                       | ❌      |
 
 ## 开启插件
 
@@ -35,20 +37,14 @@
 // config/plugin.js
 exports.decoratorRouter = {
   enable: true,
-  package: 'egg-decorator-router',
+  package: 'egg-decorator-router'
 }
 ```
 
 ## 使用场景
 
-使用 es7 装饰器来定义 egg 的路由
-
-- 不用单独定义router，直接在 controller 里通过装饰器自动生成 router
+- 不用单独定义 router，直接在 controller 里通过装饰器自动生成 router
 - 支持在 controller 里通过装饰器方式加入中间件
-
-## 详细配置
-
-请到 [config/config.default.js](config/config.default.js) 查看详细配置项说明。
 
 ## 规范
 
@@ -80,7 +76,7 @@ Parameter is available
 
 ### Use HttpMethod define a sub-path
 
-HttpMethod include `HttpGet` `HttpPost` `HttpPut` `HttpPatch` and `HttpDelete`
+HttpMethod include `HttpGet` `HttpPost` `HttpPut` `HttpPatch` `HttpDelete` and `HttpAll`
 
 Define a sub-path in controller's method
 

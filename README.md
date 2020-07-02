@@ -20,14 +20,12 @@
 [download-image]: https://img.shields.io/npm/dm/egg-decorator-router.svg?style=flat-square
 [download-url]: https://npmjs.org/package/egg-decorator-router
 
-<!--
-Description here.
--->
+Define egg.js router and middleware use decorator.
 
 ## Install
 
 ```bash
-$ npm i egg-decorator-router --save
+npm i egg-decorator-router --save
 ```
 
 ## Usage
@@ -39,15 +37,6 @@ exports.decoratorRouter = {
   package: 'egg-decorator-router'
 }
 ```
-
-## Configuration
-
-```js
-// {app_root}/config/config.default.js
-exports.decoratorRouter = {}
-```
-
-see [config/config.default.js](config/config.default.js) for more detail.
 
 ## Specification
 
@@ -79,7 +68,7 @@ Parameter is available
 
 ### Use HttpMethod define a sub-path
 
-HttpMethod include `HttpGet` `HttpPost` `HttpPut` `HttpPatch` and `HttpDelete`
+HttpMethod include `HttpGet` `HttpPost` `HttpPut` `HttpPatch` `HttpDelete` and `HttpAll`
 
 Define a sub-path in controller's method
 
