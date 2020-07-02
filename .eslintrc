@@ -1,6 +1,6 @@
 {
   "root": true,
-  "extends": ["standard", "prettier", "prettier/standard"],
+  "extends": ["prettier", "prettier/standard"],
   "plugins": ["prettier", "standard"],
   "rules": {
     "prettier/prettier": "error"

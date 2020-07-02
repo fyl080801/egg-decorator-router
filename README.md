@@ -38,9 +38,50 @@ exports.decoratorRouter = {
 }
 ```
 
+> 基于 typescript 的 eggjs 项目可直接使用装饰器  
+> 如果是 js 项目，则需要手动安装 `babel-plugin-transform-decorators-legacy` 和 `babel-plugin-transform-object-rest-spread`这两个包，并在项目里加入 `.babelrc` 文件
+
+.babelrc 定义如下:
+
+```json
+{
+  "plugins": ["transform-decorators-legacy", "transform-object-rest-spread"]
+}
+```
+
 ## Specification
 
 The full path is combin between root-path and sub-path.
+
+在 controller 中先引入依赖
+
+```javascript
+const {
+  Route,
+  HttpAll,
+  HttpGet,
+  HttpPost,
+  HttpPut,
+  HttpPatch,
+  HttpDelete,
+  Middleware
+} = require('egg-decorator-router')
+```
+
+如果使用 typescript
+
+```typescript
+import {
+  Route,
+  HttpAll,
+  HttpGet,
+  HttpPost,
+  HttpPut,
+  HttpPatch,
+  HttpDelete,
+  Middleware
+} from 'egg-decorator-router'
+```
 
 ### Use Route define a root-path on the controller
 
@@ -140,10 +181,6 @@ class HomeController extends Controller {
 
 module.exports = HomeController
 ```
-
-## Questions & Suggestions
-
-Please open an issue [here](https://github.com/fyl080801/egg-decorator-router/issues).
 
 ## License
 
