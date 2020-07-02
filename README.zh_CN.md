@@ -41,6 +41,17 @@ exports.decoratorRouter = {
 }
 ```
 
+> 基于 typescript 的 eggjs 项目可直接使用装饰器  
+> 如果是 js 项目，则需要手动安装 `babel-plugin-transform-decorators-legacy` 和 `babel-plugin-transform-object-rest-spread`这两个包，并在项目里加入 `.babelrc` 文件
+
+.babelrc 定义如下:
+
+```json
+{
+  "plugins": ["transform-decorators-legacy", "transform-object-rest-spread"]
+}
+```
+
 ## 使用场景
 
 - 不用单独定义 router，直接在 controller 里通过装饰器自动生成 router
@@ -48,11 +59,41 @@ exports.decoratorRouter = {
 
 ## 规范
 
-The full path is combin between root-path and sub-path.
+Http 请求的完整路径是根路径和子路径合并的结果
 
-### Use Route define a root-path on the controller
+在 controller 中先引入依赖
 
-Define a root path on controller
+```javascript
+const {
+  Route,
+  HttpAll,
+  HttpGet,
+  HttpPost,
+  HttpPut,
+  HttpPatch,
+  HttpDelete,
+  Middleware
+} = require('egg-decorator-router')
+```
+
+如果使用 typescript
+
+```typescript
+import {
+  Route,
+  HttpAll,
+  HttpGet,
+  HttpPost,
+  HttpPut,
+  HttpPatch,
+  HttpDelete,
+  Middleware
+} from 'egg-decorator-router'
+```
+
+### 直接在 controller 里定义一个路由
+
+在 controller 里定义一个根路径
 
 ```javascript
 // root path is '/'
@@ -68,17 +109,17 @@ Define a root path on controller
 @Route('/routename/action')
 ```
 
-Parameter is available
+支持定义参数
 
 ```javascript
 @Route('/routename/:name')
 ```
 
-### Use HttpMethod define a sub-path
+### 定义子目录和 HttpMethod
 
-HttpMethod include `HttpGet` `HttpPost` `HttpPut` `HttpPatch` `HttpDelete` and `HttpAll`
+支持 Http 方法 `HttpGet` `HttpPost` `HttpPut` `HttpPatch` `HttpDelete` `HttpAll`
 
-Define a sub-path in controller's method
+在 controller 方法上定义子目录
 
 ```javascript
 // sub-path is '/'
@@ -94,7 +135,7 @@ Define a sub-path in controller's method
 @HttpGet('/action/:id')
 ```
 
-### Define middleware
+### 定义中间件
 
 ```javascript
 @Middleware(routeM)
@@ -148,10 +189,6 @@ class HomeController extends Controller {
 
 module.exports = HomeController
 ```
-
-## 提问交流
-
-请到 [egg issues](https://github.com/fyl080801/egg-decorator-router/issues) 异步交流。
 
 ## License
 
