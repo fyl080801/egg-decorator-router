@@ -6,7 +6,7 @@ node_js:
 before_install:
   - npm i npminstall -g
 install:
-  - npminstall
+  - npm i -f
 script:
   - npm run ci
 after_script:
