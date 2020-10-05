@@ -1,9 +1,8 @@
-os: linux
-dist: ubuntu
 language: node_js
 node_js:
   - '12'
 before_install:
+  - ulimit -n 102400
   - npm i npminstall -g
 install:
   - npminstall
