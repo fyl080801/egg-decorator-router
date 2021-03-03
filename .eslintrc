@@ -1,11 +1,8 @@
 {
   "root": true,
-  "extends": ["prettier", "prettier/standard"],
+  "extends": ["prettier"],
   "plugins": ["prettier", "standard"],
-  "rules": {
-    "prettier/prettier": "error"
-  },
-  "parser": "babel-eslint",
+  "parser": "@babel/eslint-parser",
   "env": {
     "node": true,
     "mocha": true

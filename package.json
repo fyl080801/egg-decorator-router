@@ -11,13 +11,8 @@
     "eggPlugin",
     "egg-plugin"
   ],
-  "dependencies": {
-    "babel-eslint": "^10.1.0",
-    "babel-plugin-transform-decorators-legacy": "^1.3.5",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-register": "^6.26.0"
-  },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.13.8",
     "autod": "^3.1.1",
     "autod-egg": "^1.1.0",
     "egg": "^2.29.1",
@@ -26,7 +21,6 @@
     "egg-mock": "^4.0.1",
     "eslint": "^7.21.0",
     "eslint-config-egg": "^9.0.0",
-    "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-html": "^6.1.1",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-node": "^11.1.0",
